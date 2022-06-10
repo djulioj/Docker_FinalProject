@@ -58,14 +58,7 @@ app.delete("/delete", (req, res) => {
     if (err) {
       res.send("nok");
     } else {
-      res.send("ok-table s deleted");
-    }
-  });
-  connection.query(`DELETE FROM a`, (err, result) => {
-    if (err) {
-      res.send("nok");
-    } else {
-      res.send("ok - table a deleted");
+      res.send("ok");
     }
   });
 });
@@ -81,16 +74,6 @@ app.get('/jsontables', function (req, res) {
   });
 });
 
-app.get('/jsontablea', function (req, res) { 
-  connection.query('SELECT * FROM a', function(err, rows, fields)   
-  {   
-      if (err){
-        res.send('nok')
-      }else {
-        res.json(rows); 
-      }
-  });
-});
 
 app.use((_, res, next) => {
   res.status(404);
