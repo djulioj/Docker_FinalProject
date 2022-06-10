@@ -1,10 +1,10 @@
-create table proyecto.s (
+create table basedatos.s (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     hash VARCHAR(50) NOT NULL
 );
 
-create table proyecto.a (
+create table basedatos.a (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     hash VARCHAR(50) NOT NULL
