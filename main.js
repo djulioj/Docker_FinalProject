@@ -26,14 +26,14 @@ connection.connect(function (err) {
   }
 });
 
-app.test("/connection", (req, res) => {
+app.get("/connection", (req, res) => {
   connection.ping((err) => {
     if (err) return res.send("nok");
     res.send("ok");
   });
 });
 
-app.add("/adduser", (req, res) => {
+app.post("/adduser", (req, res) => {
   const { id } = req.body;
   connection.query(
     (err, rows) => {
