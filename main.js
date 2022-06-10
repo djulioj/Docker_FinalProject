@@ -89,3 +89,11 @@ app.get('/jsontablea', function (req, res) {
       }
   });
 });
+
+app.use((_, res, next) => {
+  res.status(404);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
