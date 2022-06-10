@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+  app:
+    container_name: web_server
+    build: 
+      context: ./server
+    depends_on:
+      - db
+    ports:
+      - "3001:3001"
+    restart: on-failure:5
+
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: proyecto
+    volumes:
+      - "./sql_script/start.sql:/docker-entrypoint-initdb.d/database.sql"
+    restart: always
