@@ -8,10 +8,10 @@ services:
       - db
     ports:
       - "3001:3001"
-    restart: on-failure:5
+    restart: always
 
   db:
-    image: mysql:latest
+    image: mysql:5.7
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: 123
