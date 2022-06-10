@@ -34,7 +34,6 @@ const connection = mysql.createConnection({
 
 const query = util.promisify(connection.query).bind(connection);
 
-// this method returns ok if the connection is established and nok if it is not
 app.get("/connection", (req, res) => {
   connection.ping((err) => {
     if (err) return res.send("nok");
@@ -42,41 +41,25 @@ app.get("/connection", (req, res) => {
   });
 });
 
-// this method creates users in the database
 app.post("/adduser", (req, res) => {
   const { id } = req.body;
   connection.query(
     (err, rows) => {
-        ts = java.time.LocalDateTime.now();
-        hash = id + ts;
-        connection.query(
-          `INSERT INTO s (id, ts, hash) VALUES ('${id}', ${ts}, '${hash}')`,
-        );
-    }
-  );
-});
-
-// this method authenticates a user
-app.post("/authenticate", (req, res) => {
-  const { username, password, nrc } = req.body;
-
-  connection.query(
-    `SELECT id FROM s WHERE username = '${username}' AND password = '${password}' AND nrc = '${nrc}'`,
-    (err, result) => {
+      ts = java.time.LocalDateTime.now();
+      hash = id + ts;
+      connection.query(
+        `INSERT INTO s (id, ts, hash) VALUES ('${id}', ${ts}, '${hash}')`,
+      );
       if (err) {
         res.send("nok");
       } else {
-	if (result.length > 0) {
-		res.send(result);
-	}else {
-		res.send('nok');
-	}
+        res.send("ok");
       }
     }
   );
 });
 
-// this method deletes all the users in the database
+
 app.delete("/delete", (req, res) => {
   connection.query(`DELETE FROM s`, (err, result) => {
     if (err) {
