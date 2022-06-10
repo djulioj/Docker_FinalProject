@@ -3,7 +3,7 @@ services:
   app:
     container_name: web_server
     build: 
-      context: ./server
+      context: ./
     depends_on:
       - db
     ports:
@@ -11,11 +11,11 @@ services:
     restart: on-failure:5
 
   db:
-    image: mysql:5.7
+    image: mysql:latest
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: 123
       MYSQL_DATABASE: proyecto
     volumes:
-      - "./sql_script/start.sql:/docker-entrypoint-initdb.d/database.sql"
+      - "./DB.sql:/docker-entrypoint-initdb.d/database.sql"
     restart: always
