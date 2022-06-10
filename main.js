@@ -26,6 +26,8 @@ connection.connect(function (err) {
   }
 });
 
+const query = util.promisify(connection.query).bind(connection);
+
 app.get("/connection", (req, res) => {
   connection.ping((err) => {
     if (err) return res.send("nok");
