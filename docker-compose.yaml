@@ -15,7 +15,7 @@ services:
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: 123
-      MYSQL_DATABASE: proyecto
+      MYSQL_DATABASE: basedatos
     volumes:
       - "./DB.sql:/docker-entrypoint-initdb.d/database.sql"
     restart: always
